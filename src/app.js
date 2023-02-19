@@ -2,37 +2,26 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
 executeProgram();
-function executeProgram() {
+
+const executeProgram = () => {
   window.onload = () => {
     //write your code here
     document.querySelector("#generate-btn").addEventListener("click", () => {
-      const selectedPronoun = getPronoun(pronouns);
-      const selectedAdjective = getAdjective(adjectives);
-      const selectedNoun = getNoun(nouns);
-      const domainName = getDomainName(
-        selectedPronoun,
-        selectedAdjective,
-        selectedNoun
-      );
+      const domainName = getDomainName();
       addExtension(domainName);
-      document.querySelector("#listOfDomains").innerHTML = showListOfDomains();
-
-      addExtension(domainName);
+      document.querySelector("#listOfDomains").innerHTML = showListOfDomains(5);
       document.querySelector("#listOfDomains").innerHTML = domainNames.join(
         "<br>"
       );
     });
   };
-}
+};
 
 const pronouns = ["the", "our", "my"];
 const adjectives = ["great", "big", "wow", "best"];
 const nouns = ["jogger", "racoon", "company", "world"];
 const extensions = [".com", ".net", ".us", ".io"];
-
 const domainNames = [];
 
 const getPronoun = pronouns => {
@@ -47,7 +36,11 @@ const getNoun = nouns => {
   return nouns[Math.floor(Math.random() * nouns.length)];
 };
 
-const getDomainName = (selectedPronoun, selectedAdjective, selectedNoun) => {
+const constructDomainName = (
+  selectedPronoun,
+  selectedAdjective,
+  selectedNoun
+) => {
   return `${selectedPronoun}${selectedAdjective}${selectedNoun}`;
 };
 
@@ -57,6 +50,22 @@ const addExtension = domainName => {
   });
 };
 
-const showListOfDomains = () => {
-  console.log(domainNames.join("\n"));
+const getDomainName = () => {
+  const selectedPronoun = getPronoun(pronouns);
+  const selectedAdjective = getAdjective(adjectives);
+  const selectedNoun = getNoun(nouns);
+  const domainName = constructDomainName(
+    selectedPronoun,
+    selectedAdjective,
+    selectedNoun
+  );
+  return domainName;
+};
+
+const showListOfDomains = (maxCount = domainNames.length) => {
+  const listItems = domainNames
+    .slice(0, maxCount)
+    .map((domainName, index) => `<li>${index + 1}. ${domainName}</li>`);
+  const list = `<ul>${listItems.join("")}</ul>`;
+  return list;
 };

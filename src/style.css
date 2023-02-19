@@ -1,9 +1,11 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-#result {
-  width: 500px;
-  height: 500px;
-  margin-top: 20px;
-  overflow: hidden;
-  scroll-behavior: auto;
+#main-container {
+  position: absolute;
+  top: 150px;
+}
+
+.card-body {
+  max-height: 300px;
+  overflow-y: auto;
 }

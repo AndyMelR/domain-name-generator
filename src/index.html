@@ -14,29 +14,35 @@
     <script type="text/javascript" src="/src/app.js"></script>
   </head>
   <body>
-    <div class="container-fluid text-center">
+    <div class="container-fluid text-center" id="main-container">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="container border border-primary" id="result">
-              <div id="listOfDomains"></div>
+        <div class="container my-4">
+          <div class="card">
+            <div class="card-header">
+              <h5 class="card-title">List of Domains</h5>
             </div>
-          </div>
-          <div class="col-lg-6">
-            <button
-              id="generate-btn"
-              type="button"
-              class="btn btn-primary mt-5"
-            >
-              Generate Domain Names
-            </button>
+            <div class="card-body">
+              <ul id="listOfDomains" class="list-group list-group-flush ">
+                <li
+                  class="list-group-item text-truncate"
+                  id="domainPlaceholder"
+                >
+                  yourdomain.com
+                </li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" id="generate-btn">
+                Generate Domain Names
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="fixed-bottom p-4">
         Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+        <a href="https://www.4geeksacademy.com">Andrea Melero</a>
       </div>
     </div>
   </body>
