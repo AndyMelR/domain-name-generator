@@ -24,14 +24,9 @@ pronouns.forEach(pronoun => {
       const domainName = `${pronoun}${adj}${noun}`;
 
       // Add different extensions
+
       extensions.forEach(ext => {
         domainNames.push(`${domainName}${ext}`);
-      });
-
-      // Add domain hacks
-      domainHacks.forEach(hack => {
-        const domainHackName = domainName.replace(/o/g, "");
-        domainNames.push(`${domainHackName}${hack}`);
       });
     });
   });
