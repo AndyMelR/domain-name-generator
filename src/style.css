@@ -1,11 +1,28 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+body {
+  background-color: #1a768f;
+}
+
 #main-container {
   position: absolute;
-  top: 150px;
+  top: 100px;
 }
 
 .card-body {
   max-height: 300px;
   overflow-y: auto;
+}
+
+#generate-btn:hover {
+  background-color: #171b43;
+}
+
+.footer {
+  color: white;
+  font-weight: 700;
+}
+
+#my-link:hover {
+  color: #1a7f1a;
 }

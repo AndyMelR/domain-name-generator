@@ -4,7 +4,7 @@ import "./style.css";
 
 executeProgram();
 
-const executeProgram = () => {
+function executeProgram() {
   window.onload = () => {
     //write your code here
     document.querySelector("#generate-btn").addEventListener("click", () => {
@@ -16,7 +16,7 @@ const executeProgram = () => {
       );
     });
   };
-};
+}
 
 const pronouns = ["the", "our", "my"];
 const adjectives = ["great", "big", "wow", "best"];
