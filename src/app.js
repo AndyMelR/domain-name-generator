@@ -4,42 +4,59 @@ import "./style.css";
 
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
+executeProgram();
+function executeProgram() {
+  window.onload = () => {
+    //write your code here
+    document.querySelector("#generate-btn").addEventListener("click", () => {
+      const selectedPronoun = getPronoun(pronouns);
+      const selectedAdjective = getAdjective(adjectives);
+      const selectedNoun = getNoun(nouns);
+      const domainName = getDomainName(
+        selectedPronoun,
+        selectedAdjective,
+        selectedNoun
+      );
+      addExtension(domainName);
+      document.querySelector("#listOfDomains").innerHTML = showListOfDomains();
 
-window.onload = function() {
-  //write your code here
-  console.log(domainNames);
-};
+      addExtension(domainName);
+      document.querySelector("#listOfDomains").innerHTML = domainNames.join(
+        "<br>"
+      );
+    });
+  };
+}
 
-const pronouns = ["the", "our"];
-const adjectives = ["great", "big"];
-const nouns = ["jogger", "racoon"];
+const pronouns = ["the", "our", "my"];
+const adjectives = ["great", "big", "wow", "best"];
+const nouns = ["jogger", "racoon", "company", "world"];
 const extensions = [".com", ".net", ".us", ".io"];
-const domainHacks = [".us"];
 
 const domainNames = [];
 
-pronouns.forEach(pronoun => {
-  adjectives.forEach(adj => {
-    nouns.forEach(noun => {
-      const domainName = `${pronoun}${adj}${noun}`;
+const getPronoun = pronouns => {
+  return pronouns[Math.floor(Math.random() * pronouns.length)];
+};
 
-      // Add different extensions
+const getAdjective = adjecives => {
+  return adjecives[Math.floor(Math.random() * adjecives.length)];
+};
 
-      extensions.forEach(ext => {
-        domainNames.push(`${domainName}${ext}`);
-      });
-    });
+const getNoun = nouns => {
+  return nouns[Math.floor(Math.random() * nouns.length)];
+};
+
+const getDomainName = (selectedPronoun, selectedAdjective, selectedNoun) => {
+  return `${selectedPronoun}${selectedAdjective}${selectedNoun}`;
+};
+
+const addExtension = domainName => {
+  extensions.forEach(ext => {
+    domainNames.push(`${domainName}${ext}`);
   });
-});
+};
 
-const generateBtn = document.getElementById("generate-btn");
-const domainList = document.getElementById("domain-list");
-
-generateBtn.addEventListener("click", () => {
-  domainList.innerHTML = "";
-  domainNames.forEach(domain => {
-    const listItem = document.createElement("li");
-    listItem.textContent = domain;
-    domainList.appendChild(listItem);
-  });
-});
+const showListOfDomains = () => {
+  console.log(domainNames.join("\n"));
+};
